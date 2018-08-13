@@ -1,10 +1,19 @@
-clear, clc
-function y = tsen(x,n) //serie de taylor para o seno
-    for i = 0:1:n
-        y = (x*(-1)^n)/ factorial(n);
+function w = tsen(x,n)
+    denominador = 0;
+    numerador = denominador;
+    soma = 0;
+    for i=0:1:n
+        denominador = meuFatorial(2*i+1);
+        numerador = ((-1)^i) * (x^(2*i+1));
+        //disp('o numerador vale ' + string(numerador));
+        //disp('e o denominador vale ' + string (denominador));
+        soma = soma + numerador/denominador;
     end
-    disp('valor calculado pela funcao criada= ' + string(x));
-    disp('valor calculado pela funcao interna do scilab' + string (sin(x)));
-    a = abs( sin(x)-y)/ sin(x);
-    disp('erro relativo = ' + string(a));
+        w = soma;
+        disp('o valor que eu calculei vale '+string(w));
+        disp('o valor da função interna eh igual a ' +string(sin(x)));
+        
+        err_relativo = abs((sin(x)-w))/sin(x);
+        
+        disp('eis o valor do erro relativo '+ string(err_relativo));
 endfunction
