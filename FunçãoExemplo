@@ -1,0 +1,31 @@
+// Codigo exemplo, por Mateus Assis
+
+// em scilab, o campo que vem logo após a palavra reservada "function" é o retorno da função
+// o nome da função vem logo após o símbolo "=" e entre parênteses virão os argumentos recebidos.
+// Essa função deverá ser chamada da seguinte maneira: >>[v1,v2] = raiz_teste(17,18,0.1)
+// isso porque ela retorna um array de valores. Caso não seja determinado o array que recebe o retorno
+// será mostrado em tela o primeiro valor guardado no array.
+function [xa,xb] = raiz_teste(x1,x2,p) // existe x1 e x2 tal que f(x1)*f(x2)<0
+    if x1<=x2 then
+        xa = x1;
+        xb = x2;
+    else
+        xa = x2;
+        xb = x1;
+    end
+    while (xb - xa) >= p
+        aux = (xa+xb)/2;
+        if(func_aux(aux)*func_aux(xb)<0) then
+            xa = aux;
+        else
+            xb = aux;
+        end
+    end
+endfunction
+
+
+// Pode-se colocar funções auxiliares no mesmo arquivo.
+
+function y = func_aux(x) // aqui colocaremos a função que desejamos saber a raiz
+    y = 2^(1-x) - 10^(-5)
+endfunction
