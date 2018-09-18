@@ -19,6 +19,11 @@
 
 function [xsc,ysc] = cencircle(r,xdes,ydes, flag) 
     r = abs(r);
+    if flag < 0 then
+        flag = -1;
+    else
+        flag = 1;
+    end
     xsc = -r:.01:r; //o círculo deve estar definido nos limites de seu raio
     for i = 1: length(xsc)
         ysc(i) = ydes + flag*sqrt(r*r-xsc(i)*xsc(i)); // o y do circulo centrado na origem
