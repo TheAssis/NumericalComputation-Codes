@@ -1,20 +1,18 @@
-function [x_vector] = resret(A_matrix, b_vector)
-    // suppose we have an upper-triangular matrix A_matrix,
-    // with b_vector as independent terms.
-    // We can apply Retroative Resolution, going from down 
-    // to up.
-    // The answer of this system is x_vector.
-    
-    // Coded by Mateus de Assis
-    // Based on the explanations of Rayssa Tavares, on a 
-    // Numerical Experimental class.
-     
-    [num_linhas, num_colunas] = size(A_matrix);
-    for i = num_linhas:-1:1
+// algorithm for retroative resolution
+// inpout: Coeficient matrix (superior triangular) A and vector b 
+// output: x vector that solves the system
+
+// code based on Numerical Computation class notes.
+// Huge thanks to Professors Raissa Tavares, Rex Medeiros, 
+// Marcelo Nogueira and Marconi Rodrigues.
+
+function x =res_ret(A, b)
+    [linhas, colunas] = size(A)
+    for i = linhas:-1:1
         soma = 0;
-        for j = i + 1 : 1 : num_colunas
-            soma = soma + A_matrix(i,j)*x_vector(j);
+        for j = i+1:colunas
+            soma = soma +x(j)*A(i,j);
         end
-        x_vector(i) = (b(i) - soma)/A_matrix(i,i);
+        x(i) = (b(i)- soma)/A(i,i);
     end
 endfunction
