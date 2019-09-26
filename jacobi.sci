@@ -25,7 +25,7 @@ function [x, cont] = jacobi(A, b, x0, T, N)
         end
         errr = max(abs(xn-xa))/max(abs(xa));
         cont = cont + 1;
-        if(errr<T || cont == N-1)then
+        if(errr<T || cont == N)then
             break;
         end
     end
