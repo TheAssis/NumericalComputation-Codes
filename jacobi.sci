@@ -11,7 +11,7 @@ function [x, cont] = jacobi(A, b, x0, T, N)
     cont = 0;
     xa = x0;
     xn = x0;
-    errr = max(abs(xn-xa))/max(xa);
+    errr = max(abs(xn-xa))/max(abs(xa));
     while(1)
         xa = xn;
         for i =1:linhas
@@ -23,7 +23,7 @@ function [x, cont] = jacobi(A, b, x0, T, N)
             end
             xn(i) = (b(i) - soma)/A(i,i);    
         end
-        errr = max(abs(xn-xa))/max(xa);
+        errr = max(abs(xn-xa))/max(abs(xa));
         cont = cont + 1;
         if(errr<T || cont == N)then
             break;
