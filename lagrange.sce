@@ -9,8 +9,10 @@
 function S = lagrange(x,y,p)
     [linhas ,colunas] = size(x);
     S = 0;
+    //somatorio
     for i = 1 : linhas
         L = 1;
+        //produtório
         for j = 1:linhas
             if i ~= j then
                 L = L*( ( p - x(j) ) / ( x(i) - x(j) ) );
